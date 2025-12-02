@@ -13,7 +13,7 @@ public abstract class GenericDay implements DaySolution {
         part1Input = readInput(
                 String.format("%s/Part1%s.txt", folder, part1IsExample ? "Example" : ""));
         part2Input = readInput(
-                String.format("%s/Part2%s.txt", folder, part1IsExample ? "Example" : ""));
+                String.format("%s/Part2%s.txt", folder, part2IsExample ? "Example" : ""));
     }
 
     protected void solve() {
