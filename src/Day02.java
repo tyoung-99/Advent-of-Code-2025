@@ -7,7 +7,7 @@ public class Day02 extends GenericDay {
     }
 
     public Day02() {
-        super(2, false, true);
+        super(2, false, false);
     }
 
     @Override
@@ -84,6 +84,39 @@ public class Day02 extends GenericDay {
 
     @Override
     public String part2(List<String> input) {
-        return "Part 2";
+        input = Arrays.asList(input.get(0).split(","));
+
+        long invalidIdsSum = 0;
+        for (String range : input) {
+            String[] bounds = range.split("-");
+            long start = Long.parseLong(bounds[0]);
+            long end = Long.parseLong(bounds[1]);
+
+            for (long i = start; i <= end; i++) {
+                if (isInvalidIdPart2(i)) {
+                    invalidIdsSum += i;
+                }
+            }
+        }
+
+        return String.valueOf(invalidIdsSum);
+    }
+
+    private boolean isInvalidIdPart2(long id) {
+        String idStr = String.valueOf(id);
+        int idStrLen = idStr.length();
+
+        for (int i = 0; i < idStrLen / 2; i++) {
+            if (idStrLen % (i + 1) != 0) {
+                continue;
+            }
+
+            String idSubStr = idStr.substring(0, i + 1);
+            if (idSubStr.repeat(idStrLen / (i + 1)).equals(idStr)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
