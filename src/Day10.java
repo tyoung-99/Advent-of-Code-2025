@@ -1,6 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -159,21 +156,9 @@ public class Day10 extends GenericDay {
         }
     }
 
-    private BufferedWriter writer;
-
     @Override
     public String part2(List<String> input) {
-        try {
-            writer = new BufferedWriter(new FileWriter("output.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         ArrayList<MachinePart2> machines = parseInputPart2(input);
-
-        // for (MachinePart2 machine : machines) {
-        // System.out.println(machine.toString());
-        // }
 
         int result = 0;
 
@@ -222,73 +207,8 @@ public class Day10 extends GenericDay {
     }
 
     private int getMinPressesPart2(MachinePart2 machine) {
-
+        return -1;
     }
-
-    // private int getMinPressesPart2(MachinePart2 machine) {
-
-    // HashSet<String> seen = new HashSet<String>();
-    // ArrayDeque<int[]> toCheck = new ArrayDeque<int[]>();
-
-    // toCheck.offer(new int[machine.joltages.length]);
-    // int presses = 0;
-
-    // while (!toCheck.isEmpty()) {
-    // int nextGroupSize = toCheck.size();
-    // presses++;
-    // for (int i = 0; i < nextGroupSize; i++) {
-    // String infoStr = "";
-
-    // int[] joltages = toCheck.poll();
-    // infoStr += "Press " + presses + " - Checking " + Arrays.toString(joltages) +
-    // ": ";
-    // String joltagesStr = Arrays.toString(joltages);
-    // if (seen.contains(joltagesStr)) {
-    // infoStr += "[Already seen]\n\n";
-    // continue;
-    // }
-    // infoStr += "[Not seen]\n";
-    // seen.add(joltagesStr);
-    // for (ButtonPart2 button : machine.buttons) {
-    // int[] updatedJoltages = Arrays.copyOf(joltages, joltages.length);
-    // for (int updateIndex : button.joltagesAffected) {
-    // updatedJoltages[updateIndex]++;
-    // }
-    // infoStr += "Button: " + button.toString() + " -> " +
-    // Arrays.toString(updatedJoltages) + "\n";
-    // if (Arrays.equals(updatedJoltages, machine.joltages)) {
-    // return presses;
-    // }
-
-    // boolean isValid = true;
-    // for (int j = 0; j < updatedJoltages.length; j++) {
-    // if (updatedJoltages[j] > machine.joltages[j]) {
-    // isValid = false;
-    // break;
-    // }
-    // }
-    // if (isValid) {
-    // toCheck.offer(updatedJoltages);
-    // }
-    // }
-    // infoStr += "\n";
-
-    // try {
-    // writer.write(infoStr);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
-    // }
-
-    // try {
-    // writer.close();
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-
-    // return -1;
-    // }
 
     private class MachinePart2 {
         protected int[] joltages;
